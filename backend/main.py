@@ -12,7 +12,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-model = OllamaLLM(model="qwen2.5:1.5b")
+model = OllamaLLM(model="llama3.2:1b")
 
 
 class Input(BaseModel):
