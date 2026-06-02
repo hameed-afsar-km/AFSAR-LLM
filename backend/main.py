@@ -1,7 +1,8 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
-from langchain_ollama import OllamaLLM
+
+from llm import generate_response
 
 app = FastAPI()
 
@@ -11,8 +12,6 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
-model = OllamaLLM(model="llama3.2:1b")
 
 
 class Input(BaseModel):
@@ -25,5 +24,7 @@ class Output(BaseModel):
 
 @app.post("/generate", response_model=Output)
 async def generate(body: Input):
-    result = model.invoke(body.input)
-    return Output(output=result)
+
+    response = generate_response(body.input)
+
+    return Output(output=response)
