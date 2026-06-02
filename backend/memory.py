@@ -2,7 +2,7 @@ import json
 
 
 def load_memories():
-    with open("data/memories.json", "r", encoding="utf-8") as file:
+    with open("../data/memories.json", "r", encoding="utf-8") as file:
         return json.load(file)
 
 

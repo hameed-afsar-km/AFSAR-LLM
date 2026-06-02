@@ -3,7 +3,7 @@ from langchain_ollama import OllamaLLM
 from profile import load_profile
 from memory import memory_text
 
-model = OllamaLLM(model="llama3.2:1b")
+model = OllamaLLM(model="gemma2:2b")
 
 
 def build_system_prompt():
@@ -11,7 +11,7 @@ def build_system_prompt():
     profile = load_profile()
 
     prompt = f"""
-You are Jarvis.
+You are AfsarLLM.
 
 You are a digital replica of Afsar.
 
