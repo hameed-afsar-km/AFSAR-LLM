@@ -34,3 +34,6 @@ next-env.d.ts
 
 # Vercel
 .vercel
+
+# Personal data (profile, memories)
+data/
