@@ -39,33 +39,39 @@ def synthesize(user_input: str) -> dict:
     profile = load_profile()
     memories = load_memories()
 
-    prompt = f"""You are an AI data extraction system for a personal AI assistant called AfsarLLM.
+    existing_memories = "\n".join(f"- {m['memory']}" for m in memories)
 
-Given the user's input, extract and categorize information about the person (Afsar) into the correct fields.
-
-Current profile:
-{json.dumps(profile, indent=2)}
-
-Current memories:
-{json.dumps(memories, indent=2)}
+    prompt = f"""You are an extraction engine for Afsar's personal assistant. Update Afsar's profile and memory with NEWly mentioned facts.
 
 User input: {user_input}
 
-Analyze the input and return ONLY valid JSON with these fields:
-- "name": string with full name, or null if not mentioned
-- "communication_style": {{"language": string, "tone": string, "approach": string}} or null
-- "goals": array of strings (new goals to add), or empty array
-- "preferences": array of strings (new preferences to add), or empty array
-- "projects": array of strings (new projects to add), or empty array
-- "memories": array of {{"memory": string}} (new memories to add), or empty array
+Current known facts:
+- Name: {profile.get('name') or 'unknown'}
+- Goals: {', '.join(profile.get('goals', [])) or 'none'}
+- Preferences: {', '.join(profile.get('preferences', [])) or 'none'}
+- Projects: {', '.join(profile.get('projects', [])) or 'none'}
+Known memories:
+{existing_memories or '- none'}
 
-Rules:
-- Only extract information explicitly stated or clearly implied.
-- Do NOT duplicate anything already in the current profile or memories.
-- If the same information already exists, return an empty array for that field.
-- Return valid JSON only, no other text."""
+Extract ONLY facts NOT already known. Output valid JSON with ONLY these keys, and only include keys that have new values:
+- "name": full name string
+- "communication_style": {{"language", "tone", "approach"}}
+- "goals": array of new goal strings
+- "preferences": array of new preference strings
+- "projects": array of new project strings
+- "memories": array of new memory strings (short, factual)
 
-    result = model.invoke(prompt)
+Return "{{}}" if nothing new. No other text."""
+
+    result = model.invoke(
+        prompt,
+        format="json",
+        keep_alive=300,
+        options={
+            "num_predict": 64,
+            "temperature": 0,
+        },
+    )
     extracted = _extract_json(result) or {}
 
     changes = {}
@@ -98,14 +104,18 @@ Rules:
         profile["projects"].extend(new_projects)
 
     existing_memories_texts = {m["memory"] for m in memories}
-    new_memories = [
-        m
-        for m in extracted.get("memories", [])
-        if m["memory"] not in existing_memories_texts
-    ]
-    if new_memories:
-        changes["memories_added"] = new_memories
-        memories.extend(new_memories)
+    new_memory_texts = extracted.get("memories", [])
+    if isinstance(new_memory_texts, list):
+        new_memories = [
+            {"memory": text}
+            for text in new_memory_texts
+            if isinstance(text, str)
+            and text.strip()
+            and text.strip() not in existing_memories_texts
+        ]
+        if new_memories:
+            changes["memories_added"] = new_memories
+            memories.extend(new_memories)
 
     _save_profile(profile)
     _save_memories(memories)

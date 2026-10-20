@@ -1,3 +1,4 @@
 fastapi
 uvicorn
 langchain_ollama
+edge-tts

@@ -37,3 +37,9 @@ next-env.d.ts
 
 # Personal data (profile, memories)
 data/
+
+# Task capture secrets (Google Calendar OAuth + service account)
+scripts/credentials.json
+scripts/token.json
+scripts/service-account.json
+scripts/calendar-id.txt

@@ -1,0 +1,136 @@
+INFO:     127.0.0.1:28969 - "POST /tts/stream HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63641 - "POST /tts/stream HTTP/1.1" 200 OK
+ INFO:     127.0.0.1:38671 - "POST /tts/stream HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38680 - "POST /tts/stream HTTP/1.1" 200 OK
+INFO:     127.0.0.1:43436 - "GET /data HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44524 - "OPTIONS /generate/stream HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44524 - "POST /generate/stream HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53362 - "OPTIONS /tts/stream HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44524 - "POST /tts/stream HTTP/1.1" 200 OK
+INFO:     127.0.0.1:11333 - "POST /generate/stream HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64259 - "POST /tts/stream HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64259 - "POST /tts/stream HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64259 - "POST /tts/stream HTTP/1.1" 200 OK
+INFO:     127.0.0.1:37405 - "POST /tts/stream HTTP/1.1" 200 OK
+INFO:     127.0.0.1:37405 - "POST /tts/stream HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41996 - "POST /generate/stream HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48028 - "POST /tts/stream HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48028 - "POST /tts/stream HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48028 - "POST /tts/stream HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48028 - "POST /tts/stream HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48028 - "POST /tts/stream HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48028 - "POST /generate/stream HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47407 - "POST /tts/stream HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47407 - "POST /tts/stream HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47407 - "POST /tts/stream HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47407 - "POST /tts/stream HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47407 - "POST /tts/stream HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47407 - "POST /tts/stream HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47407 - "POST /tts/stream HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47407 - "POST /tts/stream HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47407 - "POST /tts/stream HTTP/1.1" 200 OK
+INFO:     127.0.0.1:35460 - "POST /generate/stream HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38899 - "POST /tts/stream HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38899 - "POST /tts/stream HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38899 - "POST /tts/stream HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38899 - "POST /tts/stream HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38899 - "POST /tts/stream HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38899 - "POST /tts/stream HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38899 - "POST /generate/stream HTTP/1.1" 200 OK
+INFO:     127.0.0.1:29509 - "POST /tts/stream HTTP/1.1" 200 OK
+INFO:     127.0.0.1:29509 - "POST /tts/stream HTTP/1.1" 200 OK
+INFO:     127.0.0.1:29509 - "POST /tts/stream HTTP/1.1" 200 OK
+INFO:     127.0.0.1:29509 - "POST /tts/stream HTTP/1.1" 200 OK
+INFO:     127.0.0.1:29509 - "POST /tts/stream HTTP/1.1" 200 OK
+INFO:     127.0.0.1:29509 - "POST /tts/stream HTTP/1.1" 200 OK
+INFO:     127.0.0.1:29509 - "POST /tts/stream HTTP/1.1" 200 OK
+INFO:     127.0.0.1:19400 - "POST /generate/stream HTTP/1.1" 200 OK
+INFO:     127.0.0.1:6394 - "POST /tts/stream HTTP/1.1" 200 OK
+INFO:     127.0.0.1:6394 - "POST /tts/stream HTTP/1.1" 200 OK
+INFO:     127.0.0.1:6394 - "POST /tts/stream HTTP/1.1" 200 OK
+INFO:     127.0.0.1:6394 - "POST /tts/stream HTTP/1.1" 200 OK
+ INFO:     127.0.0.1:54461 - "POST /generate/stream HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47764 - "POST /tts/stream HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47764 - "POST /tts/stream HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47764 - "POST /tts/stream HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47764 - "POST /tts/stream HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42973 - "POST /generate/stream HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41796 - "POST /tts/stream HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41796 - "POST /tts/stream HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41796 - "POST /tts/stream HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41796 - "POST /tts/stream HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41796 - "POST /tts/stream HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41796 - "POST /tts/stream HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45037 - "POST /generate/stream HTTP/1.1" 200 OK
+INFO:     127.0.0.1:21088 - "POST /tts/stream HTTP/1.1" 200 OK
+INFO:     127.0.0.1:21088 - "POST /tts/stream HTTP/1.1" 200 OK
+INFO:     127.0.0.1:21088 - "POST /tts/stream HTTP/1.1" 200 OK
+INFO:     127.0.0.1:21088 - "POST /tts/stream HTTP/1.1" 200 OK
+INFO:     127.0.0.1:21088 - "POST /tts/stream HTTP/1.1" 200 OK
+INFO:     127.0.0.1:21088 - "POST /tts/stream HTTP/1.1" 200 OK
+INFO:     127.0.0.1:10439 - "POST /tts/stream HTTP/1.1" 200 OK
+INFO:     127.0.0.1:11991 - "POST /tts/stream HTTP/1.1" 200 OK
+INFO:     127.0.0.1:2265 - "GET /data HTTP/1.1" 200 OK
+ INFO:     127.0.0.1:13083 - "GET /search?q=nvidia%20stock%20price HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:41530 - "GET /search?q=nvidia%20stock%20price HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41538 - "POST /generate/stream HTTP/1.1" 200 OK
+INFO:     127.0.0.1:19496 - "OPTIONS /generate/stream HTTP/1.1" 200 OK
+INFO:     127.0.0.1:19496 - "POST /generate/stream HTTP/1.1" 200 OK
+INFO:     127.0.0.1:21511 - "OPTIONS /tts/stream HTTP/1.1" 200 OK
+INFO:     127.0.0.1:19496 - "POST /tts/stream HTTP/1.1" 200 OK
+INFO:     127.0.0.1:19496 - "POST /tts/stream HTTP/1.1" 200 OK
+INFO:     127.0.0.1:19496 - "POST /tts/stream HTTP/1.1" 200 OK
+INFO:     127.0.0.1:23217 - "GET /api/v1/home/feed?latitude=12.9716&longitude=77.5946 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:44623 - "GET /api/v1/home/feed?latitude=12.9716&longitude=77.5946 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:14948 - "OPTIONS /api/v1/locations/reverse-geocode HTTP/1.1" 200 OK
+INFO:     127.0.0.1:14948 - "POST /api/v1/locations/reverse-geocode HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:43107 - "POST /api/v1/locations/reverse-geocode HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:43107 - "GET /api/v1/locations/suggestions?query=kayal&latitude=12.9716&longitude=77.5946 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:43107 - "GET /api/v1/locations/suggestions?query=kayal&latitude=12.9716&longitude=77.5946 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:43107 - "GET /api/v1/locations/suggestions?query=kayalpattinam&latitude=12.9716&longitude=77.5946 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:43107 - "GET /api/v1/locations/suggestions?query=kayalpattinam&latitude=12.9716&longitude=77.5946 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:43107 - "GET /api/v1/categories?kind=PRODUCT HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:64383 - "GET /api/v1/products?latitude=12.9716&longitude=77.5946&limit=24&sort=popularity HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:64383 - "GET /api/v1/categories?kind=PRODUCT HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:43107 - "GET /api/v1/products?latitude=12.9716&longitude=77.5946&limit=24&sort=popularity HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:20679 - "GET /api/v1/products?latitude=12.9716&longitude=77.5946&limit=24&sort=popularity HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53089 - "GET /api/v1/categories?kind=PRODUCT HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53089 - "GET /api/v1/home/feed?latitude=12.9716&longitude=77.5946 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53089 - "GET /api/v1/home/feed?latitude=12.9716&longitude=77.5946 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:63510 - "POST /api/v1/locations/reverse-geocode HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:28784 - "GET /api/v1/categories?kind=PRODUCT HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:43000 - "GET /api/v1/products?latitude=12.9716&longitude=77.5946&limit=24&sort=popularity HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:43000 - "GET /api/v1/categories?kind=PRODUCT HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:28784 - "GET /api/v1/products?latitude=12.9716&longitude=77.5946&limit=24&sort=popularity HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:28784 - "GET /api/v1/home/feed?latitude=12.9716&longitude=77.5946 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:28784 - "GET /api/v1/home/feed?latitude=12.9716&longitude=77.5946 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:63123 - "POST /api/v1/locations/reverse-geocode HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:63123 - "GET /api/v1/home/feed?latitude=12.87580420631982&longitude=80.11203023057773 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:63123 - "OPTIONS /api/v1/analytics/events HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63123 - "POST /api/v1/analytics/events HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:63123 - "GET /api/v1/home/feed?latitude=12.87580420631982&longitude=80.11203023057773 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:1299 - "GET /api/v1/home/feed?latitude=12.87580420631982&longitude=80.11203023057773 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:29239 - "GET /api/v1/home/feed?latitude=12.9716&longitude=77.5946&radius_km=25 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:50440 - "GET /api/v1/home/feed?latitude=12.9716&longitude=77.5946&radius_km=10 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:50440 - "GET /api/v1/home/feed?latitude=12.9716&longitude=77.5946&radius_km=10 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:59253 - "GET /api/v1/home/feed?latitude=12.9716&longitude=77.5946&radius_km=25 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:14776 - "GET /api/v1/home/feed?latitude=12.9716&longitude=77.5946&radius_km=10 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:14776 - "GET /api/v1/home/feed?latitude=12.9716&longitude=77.5946&radius_km=10 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:9388 - "GET /api/v1/home/feed?latitude=12.9716&longitude=77.5946&radius_km=10 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:9388 - "GET /api/v1/home/feed?latitude=12.9716&longitude=77.5946&radius_km=10 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:9388 - "GET /api/v1/home/feed?latitude=12.9716&longitude=77.5946&radius_km=10 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:9388 - "GET /api/v1/home/feed?latitude=12.9716&longitude=77.5946&radius_km=10 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:9388 - "GET /api/v1/home/feed?latitude=12.9716&longitude=77.5946&radius_km=10 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:9388 - "GET /api/v1/home/feed?latitude=12.9716&longitude=77.5946&radius_km=10 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:30499 - "GET /api/v1/home/feed?latitude=12.9716&longitude=77.5946&radius_km=10 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:55766 - "GET /api/v1/home/feed?latitude=12.9716&longitude=77.5946&radius_km=10 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:57620 - "GET /api/v1/home/feed?latitude=12.9716&longitude=77.5946&radius_km=10 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:57620 - "GET /api/v1/home/feed?latitude=12.9716&longitude=77.5946&radius_km=10 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:50978 - "GET /api/v1/home/feed?latitude=12.9716&longitude=77.5946&radius_km=10 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:50978 - "GET /api/v1/home/feed?latitude=12.9716&longitude=77.5946&radius_km=10 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:50978 - "GET /api/v1/home/feed?latitude=12.9716&longitude=77.5946&radius_km=10 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:3778 - "GET /api/v1/home/feed?latitude=12.9716&longitude=77.5946&radius_km=10 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:2650 - "GET /api/v1/home/feed?latitude=12.9716&longitude=77.5946&radius_km=10 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:2650 - "GET /api/v1/home/feed?latitude=12.9716&longitude=77.5946&radius_km=10 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:2650 - "GET /api/v1/home/feed?latitude=12.9716&longitude=77.5946&radius_km=10 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:2650 - "GET /api/v1/home/feed?latitude=12.9716&longitude=77.5946&radius_km=10 HTTP/1.1" 404 Not Found

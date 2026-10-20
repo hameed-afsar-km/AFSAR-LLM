@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import styles from "./page.module.css";
 
 type Message = {
@@ -24,6 +24,197 @@ type Memory = {
   memory: string;
 };
 
+const API_BASE = "http://127.0.0.1:8000";
+
+const audioQueue: string[] = [];
+let audioPlaying = false;
+
+function playNextAudio() {
+  if (audioQueue.length === 0) {
+    audioPlaying = false;
+    return;
+  }
+  audioPlaying = true;
+  const url = audioQueue.shift()!;
+  const audio = new Audio(url);
+  audio.onended = () => {
+    URL.revokeObjectURL(url);
+    playNextAudio();
+  };
+  audio.play().catch(() => {
+    URL.revokeObjectURL(url);
+    playNextAudio();
+  });
+}
+
+const ttsChainQueue: string[] = [];
+let ttsChainBusy = false;
+
+let msPlayer: {
+  ms: MediaSource;
+  sb: SourceBuffer;
+  audio: HTMLAudioElement;
+} | null = null;
+const msChunkQueue: Uint8Array<ArrayBuffer>[] = [];
+let msAppending = false;
+
+function base64ToBytes(b64: string): Uint8Array<ArrayBuffer> {
+  const binary = atob(b64);
+  const buf = new ArrayBuffer(binary.length);
+  const bytes = new Uint8Array(buf);
+  for (let i = 0; i < binary.length; i++) bytes[i] = binary.charCodeAt(i);
+  return bytes;
+}
+
+function appendSegment(segments: string[] | string) {
+  if (typeof MediaSource === "undefined") {
+    const list = Array.isArray(segments) ? segments : [segments];
+    pushAudioSegments(list);
+    return;
+  }
+  const bytes =
+    typeof segments === "string" ? base64ToBytes(segments) : segments.map(base64ToBytes);
+  const list = Array.isArray(bytes) ? bytes : [bytes];
+  msChunkQueue.push(...list);
+  void processMsQueue();
+}
+
+async function processMsQueue() {
+  if (msAppending) return;
+  msAppending = true;
+  try {
+    while (msChunkQueue.length > 0) {
+      let sb: SourceBuffer;
+      try {
+        sb = await ensureMsSourceBuffer();
+      } catch {
+        const queued = msChunkQueue.splice(0);
+        for (const bytes of queued) pushByteBlob(bytes);
+        return;
+      }
+      if (sb.updating) {
+        await new Promise<void>((resolve) => {
+          sb.addEventListener("updateend", () => resolve(), { once: true });
+        });
+      }
+      const chunk = msChunkQueue.shift()!;
+      sb.appendBuffer(chunk);
+      if (msPlayer?.audio.paused) {
+        msPlayer.audio.play().catch(() => {});
+      }
+    }
+  } finally {
+    msAppending = false;
+  }
+}
+
+function pushByteBlob(bytes: Uint8Array<ArrayBuffer>) {
+  const url = URL.createObjectURL(new Blob([bytes], { type: "audio/mpeg" }));
+  audioQueue.push(url);
+  if (!audioPlaying) playNextAudio();
+}
+
+function ensureMsSourceBuffer(): Promise<SourceBuffer> {
+  if (msPlayer && msPlayer.ms.readyState === "open") {
+    return Promise.resolve(msPlayer.sb);
+  }
+  return new Promise((resolve, reject) => {
+    const ms = new MediaSource();
+    const url = URL.createObjectURL(ms);
+    const audio = new Audio(url);
+    audio.autoplay = true;
+    ms.addEventListener(
+      "sourceopen",
+      () => {
+        try {
+          const sb = ms.addSourceBuffer("audio/mpeg");
+          msPlayer = { ms, sb, audio };
+          resolve(sb);
+        } catch (err) {
+          reject(err as Error);
+        }
+      },
+      { once: true },
+    );
+    ms.addEventListener("error", () => reject(new Error("MediaSource error")), {
+      once: true,
+    });
+  });
+}
+
+function queueSpeak(text: string) {
+  const trimmed = text.trim();
+  if (trimmed.length < 2) return;
+  ttsChainQueue.push(trimmed);
+  if (!ttsChainBusy) nextSpeak();
+}
+
+function nextSpeak() {
+  if (ttsChainQueue.length === 0) {
+    ttsChainBusy = false;
+    return;
+  }
+  ttsChainBusy = true;
+  const text = ttsChainQueue.shift()!;
+  speakStreamed(text).finally(() => nextSpeak());
+}
+
+function pushAudioSegments(segments: string[]) {
+  for (const b64 of segments) pushByteBlob(base64ToBytes(b64));
+}
+
+async function speakStreamed(text: string) {
+  let res: Response;
+  try {
+    res = await fetch(`${API_BASE}/tts/stream`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ text }),
+    });
+  } catch {
+    return;
+  }
+  if (!res.ok || !res.body) return;
+
+  const reader = res.body.getReader();
+  const decoder = new TextDecoder();
+  let buffer = "";
+  let segments: string[] = [];
+
+  while (true) {
+    const { done, value } = await reader.read();
+    if (done) break;
+    buffer += decoder.decode(value, { stream: true });
+    const lines = buffer.split("\n");
+    buffer = lines.pop()!;
+
+    for (const line of lines) {
+      if (!line.startsWith("data: ")) continue;
+      const payload = line.slice(6);
+      if (!payload) continue;
+      try {
+        const parsed = JSON.parse(payload);
+        if (parsed.done) {
+          if (segments.length) {
+            appendSegment(segments);
+            segments = [];
+          }
+          continue;
+        }
+        if (!parsed.audio) continue;
+        appendSegment(parsed.audio);
+      } catch {
+        // skip malformed event
+      }
+    }
+  }
+  if (segments.length) appendSegment(segments);
+}
+
+function isSentenceEnd(text: string) {
+  return /[.!?\n]$/.test(text.trim());
+}
+
 export default function Home() {
   const [profile, setProfile] = useState<Profile | null>(null);
   const [memories, setMemories] = useState<Memory[]>([]);
@@ -34,9 +225,15 @@ export default function Home() {
   const [messages, setMessages] = useState<Message[]>([]);
   const [chatInput, setChatInput] = useState("");
   const [chatLoading, setChatLoading] = useState(false);
-  const [savedInChat, setSavedInChat] = useState<string | null>(null);
+  const [ttsEnabled, setTtsEnabled] = useState(true);
+  const [listening, setListening] = useState(false);
 
   const chatEndRef = useRef<HTMLDivElement>(null);
+  const recognitionRef = useRef<any>(null);
+  const streamContentRef = useRef("");
+  const pendingSpeechRef = useRef("");
+  const lastStreamAtRef = useRef(0);
+  const pauseTimerRef = useRef<number | null>(null);
 
   useEffect(() => {
     fetchData();
@@ -48,10 +245,10 @@ export default function Home() {
 
   async function fetchData() {
     try {
-      const res = await fetch("http://localhost:8000/data");
+      const res = await fetch(`${API_BASE}/data`);
       const data = await res.json();
-      setProfile(data.profile);
-      setMemories(data.memories);
+      setProfile(data.profile ?? null);
+      setMemories(Array.isArray(data.memories) ? data.memories : []);
     } catch (err) {
       console.error("Failed to load data", err);
     }
@@ -63,16 +260,16 @@ export default function Home() {
     setSynthesizeLoading(true);
     setSynthesizeMessage("");
     try {
-      const res = await fetch("http://localhost:8000/synthesize", {
+      const res = await fetch(`${API_BASE}/synthesize`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ input: synthesizeInput }),
       });
       const data = await res.json();
-      setProfile(data.profile);
-      setMemories(data.memories);
+      setProfile(data.profile ?? null);
+      setMemories(Array.isArray(data.memories) ? data.memories : []);
       const changes = data.changes;
-      const changedFields = Object.keys(changes).filter((k) =>
+      const changedFields = Object.keys(changes ?? {}).filter((k) =>
         Array.isArray(changes[k])
           ? (changes[k] as unknown[]).length > 0
           : changes[k],
@@ -93,53 +290,175 @@ export default function Home() {
   async function handleChatSubmit(e: React.FormEvent) {
     e.preventDefault();
     if (!chatInput.trim()) return;
-    const userMessage = chatInput;
+    submitChat(chatInput);
+  }
+
+  async function submitChat(userMessage: string) {
     setChatInput("");
     setMessages((prev) => [...prev, { role: "user", content: userMessage }]);
     setChatLoading(true);
+    streamContentRef.current = "";
+
+    const stopPauseFlush = () => {
+      if (pauseTimerRef.current !== null) {
+        window.clearInterval(pauseTimerRef.current);
+        pauseTimerRef.current = null;
+      }
+    };
+
+    const flushSpeech = () => {
+      const pending = pendingSpeechRef.current;
+      pendingSpeechRef.current = "";
+      if (!pending.trim()) return;
+      queueSpeak(pending);
+    };
+
+    const schedulePauseFlush = () => {
+      if (pauseTimerRef.current !== null) return;
+      pauseTimerRef.current = window.setInterval(() => {
+        if (
+          pendingSpeechRef.current.trim().length >= 10 &&
+          Date.now() - lastStreamAtRef.current >= 350
+        ) {
+          stopPauseFlush();
+          flushSpeech();
+        }
+      }, 150);
+    };
+
+    const flushAtBoundary = () => {
+      const pending = pendingSpeechRef.current;
+      let cut = -1;
+      for (const c of [",", ";", ".", "!", "?", ":", " "]) {
+        const i = pending.lastIndexOf(c);
+        if (i > cut) cut = i;
+      }
+      if (cut > 0 && cut < pending.length - 1) {
+        pendingSpeechRef.current = pending.slice(cut + 1).trimStart();
+        stopPauseFlush();
+        queueSpeak(pending.slice(0, cut + 1));
+        schedulePauseFlush();
+      } else {
+        stopPauseFlush();
+        flushSpeech();
+      }
+    };
+
     try {
-      const res = await fetch("http://localhost:8000/generate", {
+      const res = await fetch(`${API_BASE}/generate/stream`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ input: userMessage }),
+        body: JSON.stringify({ input: userMessage, history: messages }),
       });
-      const data = await res.json();
-      setMessages((prev) => [
-        ...prev,
-        { role: "assistant", content: data.output },
-      ]);
-      // auto-synthesize: try to extract and save info from user's message
-      try {
-        const synthRes = await fetch("http://localhost:8000/synthesize", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ input: userMessage }),
-        });
-        const synthData = await synthRes.json();
-        const changes = synthData.changes;
-        const changedFields = Object.keys(changes).filter((k) =>
-          Array.isArray(changes[k])
-            ? (changes[k] as unknown[]).length > 0
-            : changes[k],
-        );
-        if (changedFields.length > 0) {
-          setProfile(synthData.profile);
-          setMemories(synthData.memories);
-          setSavedInChat(`Saved: ${changedFields.join(", ")}`);
-          setTimeout(() => setSavedInChat(null), 4000);
+
+      const reader = res.body!.getReader();
+      const decoder = new TextDecoder();
+      let assistantMessage = "";
+
+      while (true) {
+        const { done, value } = await reader.read();
+        if (done) break;
+
+        const chunk = decoder.decode(value, { stream: true });
+        const lines = chunk.split("\n");
+
+        for (const line of lines) {
+          if (!line.startsWith("data: ")) continue;
+          const payload = line.slice(6);
+          if (!payload) continue;
+
+          try {
+            const parsed = JSON.parse(payload);
+            if (parsed.done) break;
+            if (!parsed.token) continue;
+
+            const token = parsed.token;
+            assistantMessage += token;
+            pendingSpeechRef.current += token;
+            lastStreamAtRef.current = Date.now();
+
+            setMessages((prev) => {
+              const updated = [...prev];
+              if (
+                updated.length > 0 &&
+                updated[updated.length - 1].role === "assistant"
+              ) {
+                updated[updated.length - 1] = {
+                  role: "assistant",
+                  content: assistantMessage,
+                };
+              } else {
+                updated.push({
+                  role: "assistant",
+                  content: assistantMessage,
+                });
+              }
+              return updated;
+            });
+
+            if (ttsEnabled) {
+              const pending = pendingSpeechRef.current;
+              if (isSentenceEnd(pending)) {
+                stopPauseFlush();
+                flushSpeech();
+              } else if (pending.length >= 80) {
+                flushAtBoundary();
+              } else {
+                schedulePauseFlush();
+              }
+            }
+          } catch {
+            // skip malformed JSON
+          }
         }
-      } catch {
-        // background save failed silently
       }
+
+      stopPauseFlush();
+      flushSpeech();
+
+      setChatLoading(false);
     } catch (err) {
+      stopPauseFlush();
       setMessages((prev) => [
         ...prev,
-        { role: "assistant", content: "Error: " + (err as Error).message },
+        {
+          role: "assistant",
+          content: "Error: " + (err as Error).message,
+        },
       ]);
-    } finally {
       setChatLoading(false);
     }
   }
+
+  const toggleMic = useCallback(() => {
+    const SpeechRecognitionAPI =
+      (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
+    if (!SpeechRecognitionAPI) return;
+
+    if (listening) {
+      recognitionRef.current?.stop();
+      setListening(false);
+      return;
+    }
+
+    const recognition = new SpeechRecognitionAPI();
+    recognition.lang = "en-US";
+    recognition.interimResults = false;
+    recognition.continuous = false;
+
+    recognition.onresult = (event: any) => {
+      const transcript = event.results[0][0].transcript;
+      setChatInput(transcript);
+      submitChat(transcript);
+    };
+
+    recognition.onerror = () => setListening(false);
+    recognition.onend = () => setListening(false);
+
+    recognitionRef.current = recognition;
+    recognition.start();
+    setListening(true);
+  }, [listening, messages, ttsEnabled]);
 
   return (
     <div className={styles.container}>
@@ -249,28 +568,49 @@ export default function Home() {
                 <div className={styles.messageBubble}>{msg.content}</div>
               </div>
             ))}
-            {chatLoading && (
-              <div className={`${styles.message} ${styles.assistant}`}>
-                <div className={styles.messageBubble}>Thinking...</div>
-              </div>
-            )}
-            {savedInChat && (
-              <div className={styles.savedIndicator}>{savedInChat}</div>
-            )}
+            {chatLoading &&
+              (messages.length === 0 ||
+                messages[messages.length - 1].role !== "assistant") && (
+                <div className={`${styles.message} ${styles.assistant}`}>
+                  <div className={styles.messageBubble}>Thinking...</div>
+                </div>
+              )}
             <div ref={chatEndRef} />
           </div>
           <form onSubmit={handleChatSubmit} className={styles.chatForm}>
+            <button
+              type="button"
+              className={`${styles.micButton} ${listening ? styles.micActive : ""}`}
+              onClick={toggleMic}
+              title={listening ? "Stop listening" : "Voice input"}
+            >
+              {listening ? "◉" : "🎤"}
+            </button>
             <input
               className={styles.chatInput}
-              placeholder="Type a message..."
+              placeholder={
+                listening
+                  ? "Listening..."
+                  : ttsEnabled
+                    ? "Type or speak..."
+                    : "Type a message..."
+              }
               value={chatInput}
               onChange={(e) => setChatInput(e.target.value)}
-              disabled={chatLoading}
+              disabled={chatLoading || listening}
             />
+            <button
+              type="button"
+              className={`${styles.ttsToggle} ${ttsEnabled ? styles.ttsActive : ""}`}
+              onClick={() => setTtsEnabled((p) => !p)}
+              title={ttsEnabled ? "Mute TTS" : "Enable TTS"}
+            >
+              {ttsEnabled ? "🔊" : "🔇"}
+            </button>
             <button
               type="submit"
               className={styles.button}
-              disabled={chatLoading || !chatInput.trim()}
+              disabled={chatLoading || !chatInput.trim() || listening}
             >
               Send
             </button>

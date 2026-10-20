@@ -287,3 +287,60 @@
   from { opacity: 0; transform: translateY(4px); }
   to { opacity: 0.85; transform: translateY(0); }
 }
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.15); }
+}
+
+.micButton {
+  width: 36px;
+  height: 36px;
+  border: 1px solid var(--foreground);
+  border-radius: 50%;
+  background: transparent;
+  color: var(--foreground);
+  font-size: 16px;
+  cursor: pointer;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s;
+}
+
+.micButton:hover {
+  opacity: 0.7;
+}
+
+.micActive {
+  background: #e53935;
+  border-color: #e53935;
+  color: #fff;
+  animation: pulse 1s ease-in-out infinite;
+}
+
+.ttsToggle {
+  width: 36px;
+  height: 36px;
+  border: 1px solid var(--foreground);
+  border-radius: 50%;
+  background: transparent;
+  color: var(--foreground);
+  font-size: 16px;
+  cursor: pointer;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s;
+}
+
+.ttsToggle:hover {
+  opacity: 0.7;
+}
+
+.ttsActive {
+  background: var(--foreground);
+  color: var(--background);
+}

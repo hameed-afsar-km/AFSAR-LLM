@@ -1,0 +1,663 @@
+# Afsar's Assistant — Personal Knowledge Questionnaire (100 Questions)
+
+## Identity
+
+1. What is your full name?
+2. What name should the assistant call you?
+3. What is your date of birth?
+4. What is your nationality?
+5. What languages do you speak?
+6. What are you currently studying or working as?
+7. What city and country do you currently live in?
+8. How would you describe yourself in one paragraph?
+9. What are three words that describe you best?
+10. What personal values are most important to you?
+
+## Personality
+
+11. Are you introverted, extroverted, or ambiverted?
+12. How do you react under pressure?
+13. How do you react to failure?
+14. How do you react to success?
+15. Are you more logical or emotional?
+16. Are you more optimistic or pessimistic?
+17. Do you overthink decisions?
+18. How patient are you?
+19. What annoys you most?
+20. What makes you happiest?
+
+## Communication Style
+
+21. How formal should the assistant speak?
+22. Do you prefer short or detailed answers?
+23. Should the assistant explain reasoning?
+24. Should it challenge your ideas when needed?
+25. Should it motivate you or stay neutral?
+26. Should it use humor?
+27. Should it use emojis?
+28. Should it ask follow-up questions frequently?
+29. Should it be brutally honest or diplomatic?
+30. How should it respond when it disagrees with you?
+
+## Learning Style
+
+31. How do you learn best?
+32. Do you prefer videos, books, projects, or courses?
+33. How long can you focus continuously?
+34. Do you prefer theory or practical work?
+35. What subjects interest you most?
+36. What subjects bore you?
+37. What is your preferred explanation style?
+38. How do you revise information?
+39. What helps you remember concepts?
+40. How should the assistant teach you?
+
+## Career
+
+41. What career are you pursuing?
+42. What industries interest you?
+43. What companies would you like to work for?
+44. Do you eventually want your own company?
+45. What does success mean to you?
+46. What salary or income goal do you have?
+47. What skills are you currently learning?
+48. What skills should you improve?
+49. What professional certifications interest you?
+50. Where do you want to be in ten years?
+
+## Projects
+
+51. What projects are you currently building?
+52. Which project is your highest priority?
+53. Which project excites you most?
+54. Which project has the biggest business potential?
+55. What technologies do you enjoy using?
+56. Which technologies do you dislike?
+57. How do you usually plan projects?
+58. Do you prototype quickly or plan heavily?
+59. What coding style do you prefer?
+60. How should the assistant help with your projects?
+
+## Productivity
+
+61. What time of day are you most productive?
+62. What distracts you most?
+63. How do you organize tasks?
+64. Do you use calendars or to-do lists?
+65. How do you prioritize work?
+66. What causes procrastination?
+67. What motivates you to work?
+68. How should the assistant remind you?
+69. How should the assistant help you stay focused?
+70. What daily habits do you want to build?
+
+## Decision Making
+
+71. How do you usually make decisions?
+72. Do you trust data or intuition more?
+73. Are you willing to take risks?
+74. How do you evaluate opportunities?
+75. How do you spend money?
+76. What purchases do you regret?
+77. What investments interest you?
+78. How should the assistant help with financial decisions?
+79. What principles guide your decisions?
+80. What mistakes do you repeatedly make?
+
+## Preferences
+
+81. What apps do you use daily?
+82. Which operating system do you prefer?
+83. Which programming languages do you prefer?
+84. Which AI tools do you use most?
+85. What websites do you visit often?
+86. What brands do you trust?
+87. What brands do you avoid?
+88. What type of workspace do you like?
+89. Do you prefer minimalism or customization?
+90. What should the assistant always remember when making recommendations?
+
+## Vision for Afsar's Assistant
+
+91. What should this assistant eventually become?
+92. What tasks should it automate?
+93. What tasks should always require your approval?
+94. What information should it permanently remember?
+95. What information should it never store?
+96. How proactive should it be?
+97. Should it proactively suggest ideas and improvements?
+98. How should it behave when uncertain?
+99. If it could only optimize one aspect of your life, what should it optimize?
+100. Describe your ideal version of Afsar's Assistant in as much detail as possible.
+
+
+# Afsar's Assistant — Advanced Personal Knowledge Questionnaire (101–200)
+
+## Thinking & Reasoning
+
+101. When solving a difficult problem, what is your first step?
+102. Do you prefer to think alone or discuss with others?
+103. How do you break down large problems?
+104. Do you rely on intuition before analysis?
+105. How often do you change your opinion after new evidence?
+106. What makes you trust information?
+107. What makes you distrust information?
+108. Do you prefer speed or accuracy?
+109. How do you validate your decisions?
+110. What thinking mistakes do you commonly make?
+
+## Creativity
+
+111. Where do your best ideas come from?
+112. How do you brainstorm?
+113. Do you write ideas down immediately?
+114. How often do you abandon projects?
+115. How do you judge whether an idea is worth pursuing?
+116. What inspires you most?
+117. Which creators or entrepreneurs inspire you?
+118. What kinds of products do you dream of building?
+119. What kind of legacy would you like to leave?
+120. What problem in the world would you most like to solve?
+
+## Work Style
+
+121. Do you multitask or single-task?
+122. How do you organize files?
+123. How do you organize code?
+124. How often do you clean your workspace?
+125. How do you name projects and folders?
+126. Do you document your work?
+127. Do you enjoy debugging?
+128. Do you prefer building alone or in teams?
+129. What kind of teammates do you prefer?
+130. What frustrates you in team projects?
+
+## Leadership
+
+131. Are you comfortable leading people?
+132. What makes a good leader?
+133. How do you handle conflict?
+134. How do you motivate others?
+135. Would you rather manage or create?
+136. Do you prefer small teams or large organizations?
+137. How do you delegate tasks?
+138. What qualities do you dislike in leaders?
+139. How should the assistant behave if acting on your behalf?
+140. What decisions should never be delegated?
+
+## Financial Mindset
+
+141. What does financial freedom mean to you?
+142. What is your biggest financial goal?
+143. How much risk are you comfortable taking?
+144. Would you rather build wealth slowly or aggressively?
+145. What would you do with ₹1 lakh?
+146. What would you do with ₹10 lakh?
+147. What would you do with ₹1 crore?
+148. How do you evaluate business opportunities?
+149. What expenses do you consider worthwhile?
+150. What expenses do you avoid?
+
+## Technology
+
+151. Which operating systems do you like most?
+152. Which programming language feels most natural to you?
+153. What software can you not live without?
+154. Which AI models do you prefer?
+155. What kind of UI do you like?
+156. Dark mode or light mode?
+157. Minimal design or feature-rich design?
+158. What coding conventions do you follow?
+159. What architecture patterns do you prefer?
+160. What emerging technologies excite you most?
+
+## AI Preferences
+
+161. Should your assistant challenge your decisions?
+162. Should it proactively remind you of goals?
+163. Should it suggest better workflows?
+164. Should it summarize long documents automatically?
+165. Should it monitor project progress?
+166. Should it ask for clarification often?
+167. Should it admit uncertainty?
+168. Should it explain its reasoning?
+169. Should it store every conversation?
+170. Should it forget some conversations automatically?
+
+## Daily Life
+
+171. Describe your ideal morning routine.
+172. Describe your ideal evening routine.
+173. How many hours do you prefer to work each day?
+174. How many breaks do you take?
+175. What habits do you want to eliminate?
+176. What habits do you want to strengthen?
+177. What usually wastes your time?
+178. What gives you energy?
+179. What drains your energy?
+180. What is your biggest daily challenge?
+
+## Future Planning
+
+181. Where do you want to live in the future?
+182. What lifestyle do you want?
+183. What kind of company would you like to build?
+184. What kind of products would you like to create?
+185. What industries interest you most?
+186. What industries would you avoid?
+187. What skills will be most valuable in ten years?
+188. How should the assistant help achieve your future goals?
+189. What should the assistant remind you to never forget?
+190. What should always remain your top priority?
+
+## Ethics & Principles
+
+191. What principles would you never compromise?
+192. How important is honesty?
+193. How important is loyalty?
+194. How important is efficiency?
+195. How important is innovation?
+196. Should the assistant optimize for speed or correctness?
+197. Should the assistant ever take autonomous actions?
+198. What actions must always require confirmation?
+199. How should the assistant respond if your goals conflict with your values?
+200. If someone interacted with Afsar's Assistant without meeting you, what qualities should make them say, "This feels exactly like Afsar's way of thinking"?
+
+
+# Afsar's Assistant — Personal Preferences Questionnaire (201–300)
+
+## Food & Drinks
+
+201. What is your favorite cuisine?
+202. What is your favorite breakfast?
+203. What is your favorite lunch?
+204. What is your favorite dinner?
+205. What is your favorite dessert?
+206. What snacks do you enjoy most?
+207. What is your favorite beverage?
+208. Do you prefer tea or coffee?
+209. What foods do you dislike?
+210. Are there any foods you never eat?
+
+## Restaurants & Dining
+
+211. Do you prefer home-cooked food or restaurants?
+212. What type of restaurants do you like?
+213. Fine dining or street food?
+214. What is your favorite fast-food chain?
+215. What is your favorite dessert shop?
+216. Do you like trying new restaurants?
+217. Do you prefer spicy or mild food?
+218. Sweet or savory?
+219. Veg or non-veg preferences?
+220. What would your ideal meal look like?
+
+## Health & Fitness
+
+221. Do you exercise regularly?
+222. What type of exercise do you enjoy?
+223. Morning workout or evening workout?
+224. Do you enjoy walking?
+225. Do you enjoy running?
+226. What sports do you enjoy playing?
+227. What sports do you enjoy watching?
+228. What health habits do you want to improve?
+229. How important is fitness to you?
+230. What health goals do you currently have?
+
+## Travel
+
+231. Mountains or beaches?
+232. City trips or nature trips?
+233. Domestic or international travel?
+234. Solo travel or group travel?
+235. Road trips or flights?
+236. Luxury hotels or budget stays?
+237. What is your dream country to visit?
+238. What is your dream city to visit?
+239. What place would you revisit?
+240. What activities do you enjoy while traveling?
+
+## Entertainment
+
+241. What genres of movies do you enjoy?
+242. What genres of TV shows do you enjoy?
+243. What genres of books do you enjoy?
+244. What genres of music do you enjoy?
+245. Do you enjoy podcasts?
+246. What type of YouTube content do you watch?
+247. What type of documentaries interest you?
+248. Who are your favorite creators?
+249. What movie can you watch repeatedly?
+250. What book has influenced you the most?
+
+## Hobbies
+
+251. What hobbies do you currently have?
+252. What hobbies would you like to learn?
+253. Do you enjoy gaming?
+254. What games do you enjoy?
+255. Do you enjoy photography?
+256. Do you enjoy writing?
+257. Do you enjoy drawing or designing?
+258. Do you enjoy reading?
+259. What do you do on weekends?
+260. What activities make you lose track of time?
+
+## Shopping
+
+261. Are you an impulsive buyer or planner?
+262. Which online shopping sites do you prefer?
+263. What do you enjoy buying most?
+264. What purchases make you happiest?
+265. What purchases do you avoid?
+266. Do you compare prices before buying?
+267. Do reviews influence your purchases?
+268. Do brands matter to you?
+269. Would you pay more for quality?
+270. What is your biggest buying mistake?
+
+## Clothing & Style
+
+271. What clothing style do you prefer?
+272. What colors do you wear most?
+273. What colors do you avoid?
+274. Casual or formal?
+275. Minimalist or fashionable?
+276. What footwear do you prefer?
+277. What accessories do you usually wear?
+278. What is your favorite clothing brand?
+279. How important is appearance to you?
+280. Describe your ideal wardrobe.
+
+## Home & Workspace
+
+281. What kind of room do you like?
+282. Do you prefer a clean desk or a creative mess?
+283. What lighting do you prefer?
+284. What type of chair do you like?
+285. What type of keyboard and mouse do you prefer?
+286. What desk setup would you love to have?
+287. What colors do you like in your workspace?
+288. Do you prefer silence or background music?
+289. What environment makes you most productive?
+290. What one thing would improve your workspace?
+
+## Lifestyle & Miscellaneous
+
+291. Are you an early bird or night owl?
+292. How do you usually relax?
+293. What stresses you the most?
+294. What gives you peace of mind?
+295. What is your ideal weekend?
+296. If you had one month completely free, how would you spend it?
+297. What are three things on your bucket list?
+298. If money were unlimited, what would you buy first?
+299. What small things make your day better?
+300. What should Afsar's Assistant always remember about your personal preferences when making recommendations or decisions?
+
+
+# Afsar's Assistant — Lifestyle & Behavioral Questionnaire (301–400)
+
+## Family & Relationships
+
+301. Who are the most important people in your life?
+302. How close are you with your family?
+303. What qualities do you value most in friends?
+304. What qualities do you dislike in people?
+305. How do you usually resolve conflicts?
+306. Do you prefer a small friend circle or a large one?
+307. How often do you stay in touch with friends?
+308. What makes you trust someone?
+309. What breaks your trust?
+310. How should the assistant refer to your close relationships?
+
+## Social Behavior
+
+311. Do you enjoy social gatherings?
+312. Do you prefer one-on-one conversations or groups?
+313. Are you comfortable speaking in public?
+314. Do you enjoy networking?
+315. How do you usually introduce yourself?
+316. What topics can you talk about for hours?
+317. What topics do you avoid?
+318. How do you react to criticism?
+319. How do you react to compliments?
+320. How should the assistant help you in social situations?
+
+## Daily Routine
+
+321. What time do you usually wake up?
+322. What is the first thing you do after waking up?
+323. Do you eat breakfast regularly?
+324. What is your morning routine?
+325. What is your evening routine?
+326. What time do you usually sleep?
+327. How many hours of sleep do you prefer?
+328. What part of the day is most productive for you?
+329. What part of the day is least productive?
+330. What daily habit would you like to improve?
+
+## Digital Life
+
+331. Which apps do you open every day?
+332. Which websites do you visit most?
+333. Which social media platforms do you use?
+334. Which social media platforms do you avoid?
+335. How many hours do you spend online daily?
+336. What digital distractions affect you most?
+337. Do you organize your files neatly?
+338. How often do you back up your data?
+339. Do you use cloud storage?
+340. What digital tools save you the most time?
+
+## Technology Preferences
+
+341. Android or iPhone?
+342. Windows, Linux, or macOS?
+343. Laptop or desktop?
+344. Keyboard shortcuts or mouse?
+345. Dark mode or light mode?
+346. Which browser do you prefer?
+347. Which search engine do you prefer?
+348. Which IDE or code editor do you prefer?
+349. Which AI tools do you use regularly?
+350. What new technology are you excited about?
+
+## Money Habits
+
+351. Do you maintain a monthly budget?
+352. Do you track your expenses?
+353. What do you spend most of your money on?
+354. What do you save money for?
+355. Do you prefer investing or saving?
+356. Do discounts influence your purchases?
+357. What is your biggest financial habit?
+358. What financial habit do you want to change?
+359. How should the assistant help with money management?
+360. What financial advice would you always follow?
+
+## Motivation
+
+361. What motivates you to work hard?
+362. What demotivates you?
+363. What is your biggest fear regarding your future?
+364. What achievement would make you proudest?
+365. What kind of impact do you want to create?
+366. What kind of recognition do you value?
+367. What keeps you going during difficult times?
+368. What quote or principle inspires you?
+369. What does a successful day look like?
+370. What does a wasted day look like?
+
+## Productivity & Organization
+
+371. Do you use a calendar regularly?
+372. Do you prefer digital notes or paper notes?
+373. How do you keep track of ideas?
+374. How do you prioritize tasks?
+375. Do you prefer deadlines or flexible schedules?
+376. How do you recover after losing focus?
+377. What productivity technique works best for you?
+378. How should the assistant remind you of tasks?
+379. Should the assistant proactively organize your work?
+380. What should the assistant never interrupt?
+
+## Purchasing Preferences
+
+381. Do you research extensively before buying?
+382. Which brands do you trust the most?
+383. Which brands do you avoid?
+384. Do aesthetics matter when buying products?
+385. What features matter most in electronics?
+386. How long do you usually keep gadgets before upgrading?
+387. Do you prefer quality or affordability?
+388. Do you enjoy collecting anything?
+389. What is your favorite purchase so far?
+390. What purchase do you regret the most?
+
+## Vision & Legacy
+
+391. How do you want people to describe you?
+392. What personal legacy do you want to leave?
+393. What professional legacy do you want to leave?
+394. What kind of company would you like to build someday?
+395. What type of problems do you enjoy solving?
+396. What would your ideal life look like at age 40?
+397. What should your assistant constantly remind you to focus on?
+398. If your assistant could automate one part of your life forever, what should it be?
+399. If someone used your assistant, what traits should immediately remind them of you?
+400. What is the single most important thing your assistant should always remember about you, no matter how much else it learns?
+
+
+# Afsar's Assistant — Core Identity Questionnaire (401–500)
+
+## Life Philosophy
+
+401. What is your personal definition of success?
+402. What is your personal definition of happiness?
+403. What is your biggest life goal?
+404. What would make you feel fulfilled?
+405. What principles guide your life?
+406. What principle would you never compromise?
+407. What kind of person do you want to become?
+408. What kind of person do you never want to become?
+409. What does integrity mean to you?
+410. What motivates your biggest decisions?
+
+## Decision Rules
+
+411. When forced to choose, do you prioritize time or money?
+412. Do you optimize for short-term gains or long-term growth?
+413. How do you judge whether an opportunity is worth pursuing?
+414. When do you say "no" to something?
+415. How much risk are you comfortable taking?
+416. What makes you immediately trust someone?
+417. What makes you immediately distrust someone?
+418. How do you decide between two equally good options?
+419. Do you prefer proven methods or experimentation?
+420. What advice do you ignore most often?
+
+## Emotional Patterns
+
+421. What situations make you anxious?
+422. What situations make you excited?
+423. What situations make you angry?
+424. What situations make you proud?
+425. How do you handle disappointment?
+426. How do you recover after failure?
+427. How do you celebrate success?
+428. What calms you down when stressed?
+429. What usually ruins your mood?
+430. How should your assistant respond when you are frustrated?
+
+## Strengths & Weaknesses
+
+431. What is your greatest strength?
+432. What is your greatest weakness?
+433. What skill are you most confident in?
+434. What skill do you struggle with?
+435. What habit hurts your progress the most?
+436. What habit helps your progress the most?
+437. What compliment do you receive most often?
+438. What criticism do you receive most often?
+439. What do you wish people understood about you?
+440. What do you wish to improve about yourself?
+
+## AI Behavior
+
+441. Should the assistant challenge your opinions?
+442. Should it proactively remind you of forgotten goals?
+443. Should it interrupt you if you are wasting time?
+444. Should it warn you before risky decisions?
+445. Should it recommend healthier habits?
+446. Should it monitor long-term progress toward goals?
+447. Should it prioritize honesty over politeness?
+448. Should it argue with you when it believes you are wrong?
+449. Should it ask permission before saving memories?
+450. Should it explain every recommendation it makes?
+
+## Work & Projects
+
+451. How should the assistant prioritize multiple projects?
+452. What kind of project should always come first?
+453. When should the assistant encourage you to take breaks?
+454. When should it push you harder?
+455. How should it handle unfinished work?
+456. How should it help during exams or deadlines?
+457. How should it help during hackathons?
+458. How should it help while coding?
+459. How should it help while learning?
+460. How should it help while making business decisions?
+
+## Automation Preferences
+
+461. What PC actions should always require confirmation?
+462. What browser actions should always require confirmation?
+463. What purchases should always require confirmation?
+464. Should it automatically organize files?
+465. Should it automatically rename files?
+466. Should it automatically create reminders?
+467. Should it automatically summarize long documents?
+468. Should it automatically categorize downloads?
+469. Should it automatically suggest optimizations?
+470. What automation should never happen without approval?
+
+## Privacy & Security
+
+471. What information should never leave your device?
+472. What files should never be read automatically?
+473. Should internet access be disabled by default?
+474. Should cloud synchronization be optional?
+475. Should conversations be permanently stored?
+476. Should sensitive memories expire over time?
+477. What information should never be remembered?
+478. What information should always be remembered?
+479. Should the assistant log every action it performs?
+480. How should it handle confidential information?
+
+## Personal AI Vision
+
+481. Five years from now, what should Afsar's Assistant be capable of?
+482. What daily tasks should it completely automate?
+483. What work should always remain under your control?
+484. What should distinguish it from ChatGPT or other assistants?
+485. How proactive should it become?
+486. Should it identify opportunities before you notice them?
+487. Should it monitor your habits and suggest improvements?
+488. Should it act as a mentor, assistant, or collaborator?
+489. If it could only have one superpower, what should it be?
+490. What would make you say, "This truly feels like a digital version of me"?
+
+## Final Identity
+
+491. Describe yourself in one sentence.
+492. Describe yourself in one paragraph.
+493. Describe yourself in one page.
+494. What should people always remember about you?
+495. What should your assistant never forget about you?
+496. What mistake should your assistant never make?
+497. What advice would your future self give your present self?
+498. If your assistant had to make decisions exactly as you would, what rule should it always follow?
+499. If you disappeared for a month, how should your assistant represent you to others?
+500. If your assistant could inherit only one thing from you—your knowledge, your skills, your personality, your values, or your decision-making—which should it inherit, and why?

@@ -1,0 +1,13 @@
+{
+  "name": "afsar-scripts",
+  "private": true,
+  "type": "module",
+  "description": "Local helper scripts for the AFSAR task-capture workflow (Sticky Notes + Google Calendar).",
+  "scripts": {
+    "gcal-setup": "node gcal-setup.mjs",
+    "gcal-add": "node gcal-add.mjs"
+  },
+  "dependencies": {
+    "googleapis": "^105.0.0"
+  }
+}
