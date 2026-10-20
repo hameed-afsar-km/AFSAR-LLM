@@ -1,17 +1,23 @@
 import json
+import logging
 import re
+from config import settings
 from llm import model
 from profile import load_profile
 from memory import load_memories
 
+logger = logging.getLogger("afsar.synthesize")
+
 
 def _save_profile(profile: dict):
-    with open("../data/profile.json", "w", encoding="utf-8") as f:
+    profile_path = settings.DATA_DIR / "profile.json"
+    with open(profile_path, "w", encoding="utf-8") as f:
         json.dump(profile, f, indent=2)
 
 
 def _save_memories(memories: list):
-    with open("../data/memories.json", "w", encoding="utf-8") as f:
+    memories_path = settings.DATA_DIR / "memories.json"
+    with open(memories_path, "w", encoding="utf-8") as f:
         json.dump(memories, f, indent=2)
 
 
@@ -63,16 +69,26 @@ Extract ONLY facts NOT already known. Output valid JSON with ONLY these keys, an
 
 Return "{{}}" if nothing new. No other text."""
 
-    result = model.invoke(
-        prompt,
-        format="json",
-        keep_alive=300,
-        options={
-            "num_predict": 64,
-            "temperature": 0,
-        },
-    )
-    extracted = _extract_json(result) or {}
+    try:
+        result = model.invoke(
+            prompt,
+            format="json",
+            keep_alive=300,
+            options={
+                "num_predict": 64,
+                "temperature": 0,
+            },
+        )
+        extracted = _extract_json(result) or {}
+    except Exception as e:
+        logger.warning(f"Synthesis extraction failed: {e}")
+        return {
+            "profile": profile,
+            "memories": memories,
+            "changes": {},
+            "raw_extracted": {},
+            "error": str(e),
+        }
 
     changes = {}
 

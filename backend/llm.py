@@ -9,7 +9,16 @@ from knowledge import knowledge_text
 from news import get_news_brief
 from websearch import should_search, web_context
 
-model = OllamaLLM(model="llama3.2:3b", keep_alive="30m")
+import logging
+from config import settings
+
+logger = logging.getLogger("afsar.llm")
+
+model = OllamaLLM(
+    model=settings.MODEL_NAME,
+    base_url=settings.OLLAMA_URL,
+    keep_alive=settings.MODEL_KEEP_ALIVE,
+)
 
 
 def current_time_note() -> str:
@@ -252,14 +261,22 @@ Assistant:"""
 
 
 def generate_response(user_input: str, conversation_history: list | None = None) -> str:
-    prompt = _build_full_prompt(user_input, conversation_history)
-    return model.invoke(prompt)
+    try:
+        prompt = _build_full_prompt(user_input, conversation_history)
+        return model.invoke(prompt)
+    except Exception as e:
+        logger.error(f"Error during response generation: {e}")
+        return f"I couldn't reach the AI engine at {settings.OLLAMA_URL}. Please check if Ollama is running and model '{settings.MODEL_NAME}' is loaded."
 
 
 def generate_response_stream(user_input: str, conversation_history: list | None = None) -> Generator[str, None, None]:
-    prompt = _build_full_prompt(user_input, conversation_history)
-    for chunk in model.stream(prompt):
-        if isinstance(chunk, GenerationChunk):
-            yield chunk.text
-        else:
-            yield str(chunk)
+    try:
+        prompt = _build_full_prompt(user_input, conversation_history)
+        for chunk in model.stream(prompt):
+            if isinstance(chunk, GenerationChunk):
+                yield chunk.text
+            else:
+                yield str(chunk)
+    except Exception as e:
+        logger.error(f"Error during streaming response generation: {e}")
+        yield f" [Error: could not reach AI engine at {settings.OLLAMA_URL}]"

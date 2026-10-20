@@ -1,49 +1,106 @@
+/* AFSAR — Global Design System */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Color palette — dark cyberpunk / JARVIS-inspired */
+  --bg-base: #0a0b0f;
+  --bg-elevated: #111218;
+  --bg-surface: #16181f;
+  --bg-overlay: #1c1e27;
+  --bg-hover: #22252f;
+
+  --border: rgba(255, 255, 255, 0.07);
+  --border-focus: rgba(99, 179, 237, 0.45);
+  --border-active: rgba(99, 179, 237, 0.8);
+
+  --text-primary: #e8eaf0;
+  --text-secondary: rgba(232, 234, 240, 0.6);
+  --text-muted: rgba(232, 234, 240, 0.35);
+
+  /* Accent — electric blue */
+  --accent: #3b82f6;
+  --accent-dim: rgba(59, 130, 246, 0.18);
+  --accent-glow: rgba(59, 130, 246, 0.35);
+  --accent-bright: #60a5fa;
+
+  /* Semantic */
+  --danger: #ef4444;
+  --danger-dim: rgba(239, 68, 68, 0.18);
+  --success: #10b981;
+  --success-dim: rgba(16, 185, 129, 0.15);
+  --warning: #f59e0b;
+
+  /* Elevation shadows */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.5);
+  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.6);
+
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-xl: 20px;
+
+  --transition-fast: 0.12s ease;
+  --transition-base: 0.2s ease;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-html {
-  height: 100%;
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 html,
 body {
-  max-width: 100vw;
-  overflow-x: hidden;
+  height: 100%;
+  overflow: hidden;
+  color-scheme: dark;
 }
 
 body {
-  min-height: 100%;
-  display: flex;
-  flex-direction: column;
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  background: var(--bg-base);
+  color: var(--text-primary);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  user-select: none;
 }
 
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
+/* Text in message bubbles should still be selectable */
+.selectableText {
+  user-select: text;
+}
+
+/* Scrollbars */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.22);
 }
 
 a {
-  color: inherit;
+  color: var(--accent-bright);
   text-decoration: none;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
+button {
+  font-family: inherit;
+}
+
+input,
+textarea {
+  font-family: inherit;
 }

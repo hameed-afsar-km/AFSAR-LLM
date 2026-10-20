@@ -1,6 +1,7 @@
 from pathlib import Path
+from config import settings
 
-KNOWLEDGE_DIR = Path("../data/knowledge_base")
+KNOWLEDGE_DIR = settings.DATA_DIR / "knowledge_base"
 
 
 def list_knowledge_files() -> list[str]:

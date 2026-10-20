@@ -1,10 +1,14 @@
-import edge_tts
+import logging
 import re
 from typing import AsyncGenerator
+import edge_tts
+from config import settings
 
-VOICE = "en-US-AriaNeural"
-RATE = "-8%"
-PITCH = "-4Hz"
+logger = logging.getLogger("afsar.tts")
+
+VOICE = settings.TTS_VOICE
+RATE = settings.TTS_RATE
+PITCH = settings.TTS_PITCH
 
 
 def split_sentences(text: str, max_len: int = 160) -> list[str]:
@@ -35,14 +39,21 @@ def split_sentences(text: str, max_len: int = 160) -> list[str]:
 
 async def stream_sentence_audio(text: str) -> AsyncGenerator[bytes, None]:
     for sentence in split_sentences(text):
-        communicate = edge_tts.Communicate(sentence, VOICE, rate=RATE, pitch=PITCH)
-        async for chunk in communicate.stream():
-            if chunk["type"] == "audio":
-                yield chunk["data"]
+        try:
+            communicate = edge_tts.Communicate(sentence, settings.TTS_VOICE, rate=settings.TTS_RATE, pitch=settings.TTS_PITCH)
+            async for chunk in communicate.stream():
+                if chunk["type"] == "audio":
+                    yield chunk["data"]
+        except Exception as e:
+            logger.warning(f"Error streaming sentence audio: {e}")
 
 
 async def stream_tts(text: str) -> AsyncGenerator[bytes, None]:
-    communicate = edge_tts.Communicate(text, VOICE, rate=RATE, pitch=PITCH)
-    async for chunk in communicate.stream():
-        if chunk["type"] == "audio":
-            yield chunk["data"]
+    try:
+        communicate = edge_tts.Communicate(text, settings.TTS_VOICE, rate=settings.TTS_RATE, pitch=settings.TTS_PITCH)
+        async for chunk in communicate.stream():
+            if chunk["type"] == "audio":
+                yield chunk["data"]
+    except Exception as e:
+        logger.warning(f"Error streaming TTS: {e}")
+

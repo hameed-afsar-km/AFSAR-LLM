@@ -1,4 +1,5 @@
 import json
+import logging
 import re
 import time
 from datetime import date
@@ -8,9 +9,12 @@ from urllib.parse import quote
 import requests
 import xml.etree.ElementTree as ET
 
+from config import settings
 from profile import load_profile
 
-DATA_DIR = Path("../data")
+logger = logging.getLogger("afsar.news")
+
+DATA_DIR = settings.DATA_DIR
 NEWS_CACHE_FILE = DATA_DIR / "news_cache.json"
 STATE_FILE = DATA_DIR / "state.json"
 
@@ -57,7 +61,7 @@ def _clean_title(title: str) -> str:
     return cleaned or title
 
 
-def _fetch_rss(query: str, limit: int) -> list[dict]:
+def _fetch_rss(query: str, limit: int, retries: int = 2) -> list[dict]:
     url = (
         "https://news.google.com/rss/search"
         + "?q="
@@ -65,26 +69,35 @@ def _fetch_rss(query: str, limit: int) -> list[dict]:
         + "&hl=en-US&gl=US&ceid=US:en"
     )
     headers = {"User-Agent": "Mozilla/5.0 (AFSAR Assistant)"}
-    resp = requests.get(url, headers=headers, timeout=NEWS_TIMEOUT)
-    resp.raise_for_status()
+    last_err = None
+    for attempt in range(retries):
+        try:
+            resp = requests.get(url, headers=headers, timeout=NEWS_TIMEOUT)
+            resp.raise_for_status()
 
-    root = ET.fromstring(resp.content)
-    items: list[dict] = []
-    for item in root.iter("item"):
-        title = _clean_title(item.findtext("title") or "")
-        source_el = item.find("source")
-        source = source_el.text.strip() if source_el is not None and source_el.text else ""
-        items.append(
-            {
-                "title": title,
-                "source": source,
-                "published": (item.findtext("pubDate") or "").strip(),
-                "link": (item.findtext("link") or "").strip(),
-            }
-        )
-        if len(items) >= limit:
-            break
-    return items
+            root = ET.fromstring(resp.content)
+            items: list[dict] = []
+            for item in root.iter("item"):
+                title = _clean_title(item.findtext("title") or "")
+                source_el = item.find("source")
+                source = source_el.text.strip() if source_el is not None and source_el.text else ""
+                items.append(
+                    {
+                        "title": title,
+                        "source": source,
+                        "published": (item.findtext("pubDate") or "").strip(),
+                        "link": (item.findtext("link") or "").strip(),
+                    }
+                )
+                if len(items) >= limit:
+                    break
+            return items
+        except Exception as exc:
+            last_err = exc
+            if attempt < retries - 1:
+                time.sleep(1)
+    logger.warning(f"Failed to fetch RSS for query '{query}': {last_err}")
+    return []
 
 
 def _read_json(path: Path) -> dict:
